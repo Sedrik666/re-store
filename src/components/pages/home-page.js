@@ -1,5 +1,6 @@
 import React from "react";
 import BookList from "../book-list/book-list";
+import ShoppingCartTable from "../shopping-card-table/shopping-card-table";
 
 const HomePage = () => {
 
@@ -7,6 +8,7 @@ const HomePage = () => {
         <div>
             <p>Home</p>
             <BookList/>
+            <ShoppingCartTable/>
         </div>
     )
 };
