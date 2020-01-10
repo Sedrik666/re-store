@@ -6,17 +6,22 @@ import BookListItem from "../book-list-item/book-list-item";
 import compose from '../../utils/compose';
 import { booksLoaded } from "../../actions/actions";
 import './book-list.css';
+import Spinner from "../spinner/spinner";
 
 
 class BookList extends Component{
     componentDidMount() {
-        const { bookstoreService } = this.props;
-        const data = bookstoreService.getBooks();
-        this.props.booksLoaded(data);
+
+        const { bookstoreService, booksLoaded } = this.props;
+        bookstoreService.getBooks()
+            .then((data) => booksLoaded(data));
     }
 
     render(){
-        const { books } = this.props;
+        const { books, loading } = this.props;
+        if(loading){
+            return <Spinner/>
+        }
         return(
             <ul className='book-list'>
                 {
